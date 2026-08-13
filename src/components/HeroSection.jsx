@@ -174,6 +174,91 @@ export default function HeroSection() {
 
                 </motion.span>
             </motion.h1>
+
+            {/* Descriptive paragraph under the headline. Delay: 0.6 seconds, makes it fade in a little after the headline */}
+            <motion.p
+                className="lead"
+                style={ { marginTop: 18 } }
+                initial={ { opacity: 0, y: 20 } }
+                animate={ { opacity: 1, y: 0 } }
+                transition={ { duration: 0.6, delay: 0.6 } } >
+                    Farm-to-cup single-origin beans from Ethiopia, Columbia & beyond. Freshly roasted in small batches and shipped to your door within 48 hours.
+            </motion.p>
+
+            {/* Container holding the two call-to-action buttons */}
+            <motion.div
+                className="hero-actions"
+                initial={ { opacity: 0, y: 20 } } 
+                animate={ { opacity: 1, y: 0 } }
+                transition={ { duration: 0.5, delay: 0.8 } } >
+                {/* Shop Coffee button. oneclick finds the element with the ID="shop" and smoothly scrolls to it. The ?. (optional chaining) avoids an error if that element doesn't exist */}
+                <Button
+                    variant="accent"
+                    size="lg"
+                    className="shadow-lg"
+                    onClick={ () => document.getElementById("shop")?.scrollIntoView( { behavior: "smooth" } ) }>
+                    SHOP COFFEE
+                </Button>
+
+                {/* Our Story button - same idea, but scrolls to the id="about" section */}
+                <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={ () => document.getElementById("about")?.scrollIntoView( { behavior: "smooth" } ) }>
+                    OUR STORY    
+                </Button>
+            </motion.div>
+
+            {/* Trust indicators - small reassurance text (rating + free shipping). Delay: 1.1 means it appears last, after the buttons */}
+            <motion.div
+            className="hero-trust"
+            initial={ { opacity: 0 } }
+            animate={ { opacity: 1 } }
+            transition={ { duration: 0.6, delay: 1.1 } } >
+                <span>★★★★★ 4.9/5 from 2,400+ customers</span>
+                {/* a visual separator line between the two stats */}
+                <span className="hero-trust-divider"></span>
+                <span>Free shipping over $50</span>
+            </motion.div>
+        </div>
+
+        {/*  Right side: hero beans image + floating price tag */}
+        <div className="hero-art-container">
+             {/* Main image
+                    style connects the scroll linked values from above
+                    initial/animate handles the one-time entrance animation on page load*/}
+             <motion.img
+                className="hero-art"
+                src={ heroBeans }
+                alt={ {
+                    scale: imgScale, // scroll-linked shrink (safe: inside a {} JS Object)
+                    opacity: imgOpacity, // scroll-linked fade
+                    y: imgY // scroll-linked downward drift
+                } }
+                initial={ { opacity: 0, scale: 0.8, x: 60 } }
+                animate={ { opacity: 1, scale: 1.35, x: 0 } }
+                transition={ { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] } } /> 
+
+                {/* Floating price badge that pops onto the image.
+                    type: spring + stiffness to give a bouncy motion
+                    delay: 1.2 waits until the image has arrives */}
+                <motion.div
+                    className="hero-floating-badge"
+                    initial={ { opacity: 0, scale: 0.5 } }
+                    animate={ { opacity: 1, scale: 1 } }
+                    transition={ {
+                        duration: 0.5,
+                        delay: 1.2,
+                        type:"spring",
+                        stiffness: 200
+                    }}>
+                    <span classNamw="hero-floating-badge-label">FROM</span>
+                    <span className="hero-floating-badge-price">$14.99</span>
+                    <span className="hero-floating-badge-label">per bag</span>
+
+                </motion.div>
+
+
         </div>
         </>
     );
