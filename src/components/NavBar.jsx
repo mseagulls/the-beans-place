@@ -179,7 +179,7 @@ export default function NavBar() {
                     />
                 </button>
             </div>
-            
+
             {/* Mobile Menu */}
             {/* AnimatePresence is what allows the closing animation to play. Without it, the menu would vanish instantly when menuOpen becomes false */}
             <AnimatePresence>
@@ -188,13 +188,12 @@ export default function NavBar() {
                     <motion.div
                         // overflow-hidden hides the links while the panel is still sliding open, so nothing spills out mid-animation
                         className="overflow-hidden md:hidden"
-                        
                         // Animate the panel's height from 0 to its natural size
                         // "exit" is what plays on the way out
-                        initial={{height: 0, opacity: 0}}
-                        animate={{height: "auto", opacity: 1}}
-                        exit={{height: 0, opacity: 0}}
-                        transition={{duration: 0.3, ease: "easeInOut"}}>
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}>
                         {/* flex-col stacks the mobile links vertically */}
                         <nav className="flex flex-col gap-4 px-6 pb-6 pt-2">
                             {/* Every link also calls closeMenu, so tapping one both jumps to the section AND close the panel */}
@@ -204,20 +203,26 @@ export default function NavBar() {
                             <a href="#shop" onClick={closeMenu} className="text-base font-semibold">
                                 Shop Coffee
                             </a>
-                            <a href="#about" onClick={closeMenu} className="text-base font-semibold">
+                            <a
+                                href="#about"
+                                onClick={closeMenu}
+                                className="text-base font-semibold">
                                 Our Story
                             </a>
-                            <a href="#contact" onClick={closeMenu} className="text-base font-semibold">
+                            <a
+                                href="#contact"
+                                onClick={closeMenu}
+                                className="text-base font-semibold">
                                 Contact
                             </a>
-                            
+
                             {/* w-full makes the button stretch the full menu width */}
                             <Button
                                 variant="accent"
                                 size="sm"
                                 className="mt-2 w-full"
                                 onClick={closeMenu}>
-                                    Order Now
+                                Order Now
                             </Button>
                         </nav>
                     </motion.div>
