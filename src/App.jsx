@@ -62,6 +62,7 @@ import FeaturesSection from "./components/FeaturesSection";
 import ProductShowCase from "./components/ProductShowcase";
 import AboutSection from "./components/AboutSection";
 import CtaSection from "./components/CtaSection";
+import ContactSection from "./components/ContactSection";
 
 export default function App() {
     return(
@@ -100,7 +101,7 @@ export default function App() {
             </section>
             {/* CONTACT */}
             <section className="bg-cta" id="contact">
-
+                <ContactSection/>
             </section>
             {/* FOOTER */}
             <section className="bg-footer">
